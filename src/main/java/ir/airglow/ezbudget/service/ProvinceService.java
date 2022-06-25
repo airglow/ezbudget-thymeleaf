@@ -28,5 +28,14 @@ public class ProvinceService {
 		
 		return provinces;
 	}
+
+	public Long create(ProvinceDto provinceDto) {
+
+		Province province = ProvinceDto.dtoToEntity(provinceDto);
+
+		provinceRepository.save(province);
+
+		return province.getId();
+	}
 	
 }

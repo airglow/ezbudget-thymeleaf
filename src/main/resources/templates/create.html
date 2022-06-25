@@ -7,9 +7,19 @@
     <title>Title</title>
 </head>
 <body>
-  <h1>List of All provinces</h1>
-  <div th:each="province : ${provinces}">
-      <div>${province.name}</div>
+  <h1>Create new Province:</h1>
+  <div>
+      <form method="post" action="/provinces" th:object="${province}">
+          <div>
+              <span>Code: </span>
+              <input type="text" th:field="*{code}" />
+          </div>
+          <div>
+              <span>Name: </span>
+              <input type="text" th:field="*{name}" />
+          </div>
+          <div><input type="submit" value="Submit" /></div>
+      </form>
   </div>
 </body>
 </html>

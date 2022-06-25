@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ir.airglow.ezbudget.dto.ProvinceDto;
@@ -34,8 +36,21 @@ public class ProvinceController {
     }
 
     @GetMapping("/create")
-    public String create() {
+    public String create(Model model) {
+
+        model.addAttribute("province", new ProvinceDto());
+
         return "create";
+    }
+
+    @PostMapping
+    public String store(@ModelAttribute(name = "province") ProvinceDto provinceDto) {
+
+        Long provinceId = provinceService.create(provinceDto);
+
+        log.info("insert new province: " + provinceId);
+
+        return "redirect:/provinces/create";
     }
 
 }
