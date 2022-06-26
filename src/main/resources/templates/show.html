@@ -8,11 +8,7 @@
 </head>
 <body>
   <h1>Index page of Province</h1>
-  <ul>
-  	<li th:each="province : ${provinces}">
-  		<span th:text="${province.code}">PLACEHOLDER</span>
-  		<span th:text="${province.name}">PLACEHOLDER</span>
-  	</li>
-  </ul>
+  <div th:text="${province.code}">PLACEHOLDER</div>
+  <div th:text="${province.name}">PLACEHOLDER</div>
 </body>
 </html>

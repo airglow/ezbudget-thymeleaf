@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ir.airglow.ezbudget.dto.ProvinceDto;
@@ -44,13 +46,42 @@ public class ProvinceController {
     }
 
     @PostMapping
-    public String store(@ModelAttribute(name = "province") ProvinceDto provinceDto) {
+    public String store(@ModelAttribute(name = "province") ProvinceDto province) {
 
-        Long provinceId = provinceService.create(provinceDto);
+        Long provinceId = provinceService.create(province);
 
-        log.info("insert new province: " + provinceId);
+        log.info("Insert new province: " + provinceId);
 
         return "redirect:/provinces/create";
+    }
+    
+    @GetMapping("/{id}")
+    public String show(Model model, @PathVariable("id") Long id) {
+    	
+    	ProvinceDto provinceDto = provinceService.findProvinceById(id);
+    	
+    	model.addAttribute("province", provinceDto);
+    	
+    	return "show";
+    }
+    
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable("id") Long id) {
+    	
+    	ProvinceDto province = provinceService.findProvinceById(id);
+    	
+    	model.addAttribute("province", province);
+    	
+    	return "edit";
+    }
+    
+    @PutMapping("/{id}")
+    public String update(@PathVariable("id") Long id, 
+    		@ModelAttribute(name = "province") ProvinceDto province) {
+    	
+    	log.info("Update province: " + id);
+    	
+    	return "redirect:/provinces";
     }
 
 }

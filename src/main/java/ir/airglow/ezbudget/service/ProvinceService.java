@@ -2,6 +2,9 @@ package ir.airglow.ezbudget.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
 
 import org.springframework.stereotype.Service;
 
@@ -36,6 +39,17 @@ public class ProvinceService {
 		provinceRepository.save(province);
 
 		return province.getId();
+	}
+	
+	public ProvinceDto findProvinceById(Long id) {
+		
+		Optional<Province> province = provinceRepository.findById(id);
+		
+		if (province.isEmpty()) {
+			throw new EntityNotFoundException();
+		}
+		
+		return ProvinceDto.entityToDto(province.get());
 	}
 	
 }
