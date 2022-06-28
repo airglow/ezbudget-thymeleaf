@@ -9,7 +9,7 @@
 <body>
   <h1>Edit Province:</h1>
   <div>
-      <form th:method="put" action="/provinces/3" th:object="${province}">
+      <form th:method="put" th:action="@{/provinces/__${provinceId}__}" th:object="${province}">
           <div>
               <span>Code: </span>
               <input type="text" th:field="*{code}" th:value="${province.code}" />

@@ -52,4 +52,21 @@ public class ProvinceService {
 		return ProvinceDto.entityToDto(province.get());
 	}
 	
+	public Long update(Long id, ProvinceDto provinceDto) {
+		
+		Optional<Province> CurrentProvince = provinceRepository.findById(id);
+		
+		if (CurrentProvince.isEmpty()) {
+			throw new EntityNotFoundException();
+		}
+		
+		Province province = ProvinceDto.dtoToEntity(provinceDto);
+		
+		province.setId(id);
+		
+		provinceRepository.save(province);
+		
+		return province.getId();
+	}
+	
 }

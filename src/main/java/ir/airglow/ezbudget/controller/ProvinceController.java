@@ -70,14 +70,17 @@ public class ProvinceController {
     	
     	ProvinceDto province = provinceService.findProvinceById(id);
     	
+    	model.addAttribute("provinceId", id);
     	model.addAttribute("province", province);
-    	
+
     	return "edit";
     }
     
     @PutMapping("/{id}")
     public String update(@PathVariable("id") Long id, 
     		@ModelAttribute(name = "province") ProvinceDto province) {
+    	
+    	provinceService.update(id, province);
     	
     	log.info("Update province: " + id);
     	
