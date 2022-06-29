@@ -34,7 +34,7 @@ public class ProvinceController {
     	
     	model.addAttribute("provinces", provinces);
     	
-        return "index";
+        return "province/index/base";
     }
 
     @GetMapping("/create")
@@ -42,7 +42,7 @@ public class ProvinceController {
 
         model.addAttribute("province", new ProvinceDto());
 
-        return "create";
+        return "province/create/base";
     }
 
     @PostMapping
