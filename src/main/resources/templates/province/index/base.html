@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout/base :: layout(~{::title}, ~{::div#th-styles}, ~{::div#th-content}, ~{::div#th-scripts})">
+<head>
+    <title>List of Province</title>
+    <div id="th-styles" th:replace="province/index/fragments/styles"></div>
+</head>
+<body>
+
+<div id="th-content" th:replace="province/index/fragments/content"></div>
+
+<div id="th-scripts" th:replace="province/index/fragments/scripts"></div>
+
+</body>
+</html>

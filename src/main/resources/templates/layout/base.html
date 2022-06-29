@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="layout(title, pageLevelStyles, content, pageLevelScripts)">
+<head>
+    <title th:replace="${title}"></title>
+    <div th:replace="layout/fragments/meta"></div>
+    <div th:replace="layout/fragments/styles"></div>
+    <div th:replace="${pageLevelStyles}"></div>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+
+<div class="wrapper">
+
+    <div th:replace="layout/fragments/preloader"></div>
+    <div th:replace="layout/fragments/navbar"></div>
+    <div th:replace="layout/fragments/sidebar"></div>
+
+    <div th:replace="${content}"></div>
+
+    <div th:replace="layout/fragments/footer"></div>
+
+</div>
+
+<div th:replace="layout/fragments/scripts"></div>
+<div th:replace="${pageLevelScripts}"></div>
+
+</body>
+</html>
