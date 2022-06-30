@@ -58,3 +58,5 @@ build/
 
 ### Eclipse ###
 bin/
+
+/src/main/resources/static/adminlte
